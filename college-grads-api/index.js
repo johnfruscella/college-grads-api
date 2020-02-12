@@ -6,7 +6,6 @@ require('dotenv/config');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-//let databaseConnected = false;*************************************************
 const homeRoute = require('./routes/home');
 
 app.use('/', homeRoute)

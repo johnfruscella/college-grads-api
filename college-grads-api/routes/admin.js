@@ -6,24 +6,25 @@ const mongoose = require('mongoose');
 const StudentSchema = require('../models/Student');
 
 
-
-const optionsMessage = {
+const optionsMessage =  {
             message: "Use the following to add, update, or view graduate information.",
             POST: "route to use: admin/post",
             GET: "route to use: admin/getall or admin/getid/:id",
             DELETE: "route to use: admin/delete/:id",
             PATCH: "route to use: admin/patch/id"
-        }
+        };
 
-        
+
     router.get('/', (req, res) => {
 
         res.status(200).json(optionsMessage);
         
       })
 
-      //POST REQUEST
-
+      //POST REQUEST *******************************************************************************************
+      async function postData(url ='http://localhost:3000/admin/post', data) {
+        await fetch(url, {});
+    }
       router.post('/post', validateStudent, async (req, res) => {
 
             try {
@@ -86,13 +87,12 @@ function validateStudent(req, res, next) {
         lastName: req.body.lastName,
         gradYear: req.body.gradYear,
         gradMonth: req.body.gradMonth,
-        job_Title: req.body.job_Title,
-        company_Name: req.body.company_Name,
-        key_Skills: req.body.key_Skills,
+        jobTitle: req.body.job_Title,
+        companyName: req.body.company_Name,
+        keySkills: req.body.key_Skills,
         gitHub: req.body.gitHub,
         linkedIn: req.body.linkedIn,
-        twitter: req.body.twitter,
-        linkedInIMG: req.body.linkedInIMG,
+        twitter: req.body.twitter
 
     })
 
@@ -102,21 +102,13 @@ function validateStudent(req, res, next) {
 
 }
 
-//middleware used for all request that require a unique id, delete one post, find one post, update one post
+
 async function get_by_id(req, res, next) {
 
     try {
-
         const searchedDoc = await StudentSchema.findById(req.params.id);
-
-        if (searchedDoc === null) {
-            throw new Error('ID is in the correct format, but no document with this id could be found')
-        }
-
-        req.searched_document = searchedDoc;
-        
-        next()
-        
+        req.searched_document = searchedDoc; 
+        next()     
     } catch (err) {
 
         let statusCode = 404;
@@ -138,36 +130,4 @@ async function get_by_id(req, res, next) {
 
 }
 
-
-//PASSWORD LOCKING THE ADMIN ROUTE (in progress)
-      //checks for password to have been correct at least one time
-
-       //passwords could be stored in admin enviorment files that store passwords. 
-      //this password will be 34567 for an example
-
-    //   let indexPassword = process.env.ADMINPASSWORD || 321,
-    //       adminPrivleges = false;
-
-    //   router.get('/admin/:key', (req, res) => {
-
-    //     if (req.params.key == indexPassword || adminPrivleges == true){
-            
-    //         app.use('/admin', adminRoute);
-
-    //         res.send('You can use the admin Route');
-
-    //         adminPrivleges = true
-
-    //     } else {
-
-    //         console.log('access denied');
-
-    //         res.send('An incorrect key was given, access denied');
-
-    //     }
-
-            
-    //   })
-
-//export all the functions to the index.js file
     module.exports = router;
