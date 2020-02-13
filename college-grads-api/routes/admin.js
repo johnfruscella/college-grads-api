@@ -21,9 +21,21 @@ const optionsMessage =  {
         
       })
 
-      //POST REQUEST *******************************************************************************************
+      // Post student
       async function postData(url ='http://localhost:3000/admin/post', data) {
-        await fetch(url, {});
+        await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                name: 'User 1'
+            })
+
+        }).then(res => {
+            return res.json()
+        }).then(data => console.log(data))
+        .catch(error => console.log('John ERROR'))
     }
       router.post('/post', validateStudent, async (req, res) => {
 
@@ -41,7 +53,7 @@ const optionsMessage =  {
       })
 
       
-        //DELETE A POST BY ID
+        //Delete Post 
 
         router.get('/delete/:id', get_by_id, (req, res) => {
 
@@ -56,7 +68,7 @@ const optionsMessage =  {
         })
 
 
-      //GET REQUEST FOR ALL GRADUATES IN THE DATABASE
+      // Get  all students
 
       router.get('/getall', async (req, res) => {
 
@@ -68,15 +80,12 @@ const optionsMessage =  {
           
       })
 
-      //GET REQUEST FOR INDIVUIDUAL DOCUMENTS
+      //Get one student
 
       router.get('/getid/:id', get_by_id, (req, res) => {
           res.json({Found_Post: req.searched_document})
       })
 
-//MIDDLEWARE FUNCTIONS FOR REQUEST
-
-//need to add hapijoi to validate the student schema better
 function validateStudent(req, res, next) {
 
     console.log(req.body);

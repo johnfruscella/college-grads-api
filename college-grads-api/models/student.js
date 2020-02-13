@@ -10,11 +10,11 @@ const studentSchema = mongoose.Schema({
         gradYear: {type: String, required: true},
         gradMonth: {type: String, required: true},
 
-        job_Title: {type: String, required: true},
+        jobTitle: {type: String, required: true},
 
-        company_Name: {type: String, required: true},
+        companyName: {type: String, required: true},
 
-        key_Skills: {type: [String], required: true},
+        keySkills: {type: [String], required: true},
 
         gitHub: {type: String, required: true},
 
@@ -22,7 +22,7 @@ const studentSchema = mongoose.Schema({
 
         twitter: {type: String, required: true},
 
-        linkedInIMG: {type: String, required: true}
+        linkedInPic: {type: String, required: true}
 
     });
 
