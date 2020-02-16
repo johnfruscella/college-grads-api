@@ -22,21 +22,7 @@ const optionsMessage =  {
       })
 
       // Post student
-      async function postData(url ='http://localhost:3000/admin/post', data) {
-        await fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                name: 'User 1'
-            })
-
-        }).then(res => {
-            return res.json()
-        }).then(data => console.log(data))
-        .catch(error => console.log('John ERROR'))
-    }
+      
       router.post('/post', validateStudent, async (req, res) => {
 
             try {
