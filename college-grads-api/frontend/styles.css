@@ -1,0 +1,33 @@
+*{
+    background-color: rgb(51, 255, 0);
+    border-style: flex 10;
+}
+::placeholder {
+    color: black;
+   }
+#postStudent {
+    
+    /* border: 2px solid black; */
+    
+    /* column-count: 3; */
+    
+}
+/* width */
+::-webkit-scrollbar {
+    width: 20px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #79b4e4;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(134, 134, 134);
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(19, 14, 14);
+  }
