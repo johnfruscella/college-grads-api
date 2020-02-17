@@ -5,13 +5,7 @@
 ::placeholder {
     color: black;
    }
-#postStudent {
-    
-    /* border: 2px solid black; */
-    
-    /* column-count: 3; */
-    
-}
+
 /* width */
 ::-webkit-scrollbar {
     width: 20px;
