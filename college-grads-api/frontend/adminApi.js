@@ -22,8 +22,8 @@ async function postRequest() {
          'Accept': 'application/json',
          'Content-Type': 'application/json'
        },
-
-       body: postJson
+      
+       body: postJson.JSON.stringify(data)
 
    })
 
@@ -37,7 +37,7 @@ async function postRequest() {
      .then( parsedResponse => {
 
          if (!checkStatusOk(parsedResponse)) {
-             return 
+             return parsedResponse
          }
 
        //   console.log(parsedResponse.document);

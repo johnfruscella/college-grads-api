@@ -24,7 +24,7 @@ const optionsMessage =  {
       // Post student
       
       router.post('/post', validateStudent, async (req, res) => {
-
+console.log(req.body);
             try {
 
                 const newPostSaved = await req.newpost.save()

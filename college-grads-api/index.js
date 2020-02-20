@@ -5,7 +5,7 @@ require('dotenv/config');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+app.use(express.static('./database_frontend'));
 const homeRoute = require('./routes/home');
 
 app.use('/', homeRoute)

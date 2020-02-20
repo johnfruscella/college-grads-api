@@ -22,7 +22,7 @@ const studentSchema = mongoose.Schema({
 
         twitter: {type: String, required: true},
 
-        linkedInPic: {type: String, required: true}
+        // linkedInPic: {type: String, required: true}
 
     });
 
